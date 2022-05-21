@@ -18,11 +18,11 @@ function App() {
           <h1>點餐系統</h1>
           <Link to="/">主頁面</Link>
           <Link to="/order">點餐</Link>
-          <Link to="/add-menu">新增餐點(管理員)</Link>
-          <Link to="/delete-menu">移除餐點(管理員)</Link>
-          <Link to="/ingredient-management">食材管理(管理員)</Link>
-          <Link to="/history">歷史訂單(管理員)</Link>
-          <Link to="/statistic">銷貨統計(管理員)</Link>
+          <Link to="/add-menu">新增餐點</Link>
+          <Link to="/delete-menu">移除餐點</Link>
+          <Link to="/ingredient-management">食材管理</Link>
+          <Link to="/history">歷史訂單紀錄</Link>
+          <Link to="/statistic">銷貨統計</Link>
         </nav>
         <main className="content">
           <Routes>
