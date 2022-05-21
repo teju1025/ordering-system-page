@@ -9,7 +9,7 @@ function IngredientItem({ingredient, cost, stock, onEdit}) {
 
     const onDelete = () => {
 
-        fetch('/ingredients/delete', {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ function IngredientItem({ingredient, cost, stock, onEdit}) {
     }
 
     const onStore = () => {
-        fetch('/ingredients/stock/edit', {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients/stock/edit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -84,13 +84,13 @@ export default function IngredientManagementPage() {
     const [ingredientStock, setIngredientStock] = useState(0)
 
     useEffect(() => {
-        fetch('/ingredients/stock').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients/stock').then(res => res.json()).then(data => {
             setIngredients(data)
         })
     }, [])
 
     const onEdit = () => {
-        fetch('/ingredients/stock').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients/stock').then(res => res.json()).then(data => {
             setIngredients(data)
         })
     }
@@ -109,7 +109,7 @@ export default function IngredientManagementPage() {
             return
         }
 
-        fetch('/ingredients/add', {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ export default function IngredientManagementPage() {
             })
         }).then(res => res.json()).then(data => {
             alert(data['message'])
-            fetch('/ingredients/stock').then(res => res.json()).then(data => {
+            fetch('https://ordering-system-api.herokuapp.com/ingredients/stock').then(res => res.json()).then(data => {
                 setIngredients(data)
             })
 

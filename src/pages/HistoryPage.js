@@ -8,7 +8,7 @@ export default function HistoryPage() {
         const [endDate, setEndDate] = useState('')
     
         useEffect(() => {
-            fetch('/history').then(res => res.json()).then(data => {
+            fetch('https://ordering-system-api.herokuapp.com/history').then(res => res.json()).then(data => {
                 setOrders(Object.keys(data).map(key =>{
                     return {
                         訂單編號: key,
@@ -30,7 +30,7 @@ export default function HistoryPage() {
                 query += `dateEnd=${endDate}`
             }
 
-            fetch(`/history?${query}`).then(res => {
+            fetch(`https://ordering-system-api.herokuapp.com/history?${query}`).then(res => {
                 if(res.ok) {
                    return res.json() 
                 }

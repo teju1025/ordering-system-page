@@ -9,7 +9,7 @@ export default function MenuDeletePage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('/menu').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/menu').then(res => res.json()).then(data => {
             setFoodList(data['menu'].map(item => item.餐點名稱))
         })
     }, [])
@@ -24,7 +24,7 @@ export default function MenuDeletePage() {
             return
         }
 
-        fetch('/menu/delete', {
+        fetch('https://ordering-system-api.herokuapp.com/menu/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

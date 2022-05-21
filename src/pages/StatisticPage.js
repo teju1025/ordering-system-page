@@ -10,7 +10,7 @@ export default function StatisticPage() {
     // {餐點名稱: "測試", 銷售量: 10, 銷售金額: 10}
     
     useEffect(() => {
-        fetch('/history').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/history').then(res => res.json()).then(data => {
             setOrders(Object.keys(data).map(key =>{
                 return {
                     訂單編號: key,
@@ -21,7 +21,7 @@ export default function StatisticPage() {
     }, [])
 
     useEffect(() => {
-        fetch('/menu').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/menu').then(res => res.json()).then(data => {
             setMenu(data['menu'])
         })
     }, [orders])
@@ -63,7 +63,7 @@ export default function StatisticPage() {
                 query += `dateEnd=${endDate}`
             }
 
-            fetch(`/history?${query}`).then(res => {
+            fetch(`https://ordering-system-api.herokuapp.com/history?${query}`).then(res => {
                 if(res.ok) {
                    return res.json() 
                 }

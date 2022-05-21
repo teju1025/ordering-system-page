@@ -47,7 +47,7 @@ export default function FoodOrderPage() {
     }
 
     useEffect(() => {
-        fetch('/menu').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/menu').then(res => res.json()).then(data => {
             setMenu(data['menu'])
         })
     }, [])
@@ -57,7 +57,7 @@ export default function FoodOrderPage() {
             alert('請選擇餐點')
             return
         }
-        fetch('/order', {
+        fetch('https://ordering-system-api.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

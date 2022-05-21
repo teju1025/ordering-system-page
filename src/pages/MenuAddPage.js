@@ -25,7 +25,7 @@ export default function MenuAddPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('/ingredients').then(res => res.json()).then(data => {
+        fetch('https://ordering-system-api.herokuapp.com/ingredients').then(res => res.json()).then(data => {
             setIngredientsList(data['ingredients'])
         })
     }, [])
@@ -48,7 +48,7 @@ export default function MenuAddPage() {
             return
         }
 
-        fetch('/menu/add', {
+        fetch('https://ordering-system-api.herokuapp.com/menu/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
