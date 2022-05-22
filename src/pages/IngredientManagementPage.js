@@ -57,7 +57,7 @@ function IngredientItem({ingredient, cost, stock, onEdit}) {
                 :
                 <Fragment>
                     <p>剩餘 {stock} 單位</p>
-                    <p>單位成本 {cost}</p>
+                    <p>單位成本 $ {cost}</p>
                 </Fragment>
             }
             <div className='row'>

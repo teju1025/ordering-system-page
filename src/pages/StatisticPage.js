@@ -43,8 +43,10 @@ export default function StatisticPage() {
             Object.keys(orders[i].訂購內容).forEach(key => {
                 // find the corresponding menu
                 const menuItem = menu.find(item => item.餐點名稱 === key)
-                statisticCopy[key].銷售量 += orders[i].訂購內容[key]
-                statisticCopy[key].銷售金額 += orders[i].訂購內容[key] * menuItem.價格
+                if(menuItem) {
+                    statisticCopy[key].銷售量 += orders[i].訂購內容[key]
+                    statisticCopy[key].銷售金額 += orders[i].訂購內容[key] * menuItem.價格
+                }
             })
         }
         setStatistic(statisticCopy)
@@ -106,7 +108,7 @@ export default function StatisticPage() {
                                 <tr>
                                     <td>{key}</td>
                                     <td>{statistic[key].銷售量} 份</td>
-                                    <td>${statistic[key].銷售金額}</td>
+                                    <td>$ {statistic[key].銷售金額}</td>
                                 </tr>
                             )
                         })

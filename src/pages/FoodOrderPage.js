@@ -11,7 +11,7 @@ function FoodItem({foodName, price, onNumberEdit}) {
     return (
         <div className='card'>
             <p className='large-text'>{foodName}</p>
-            <p>{price}$</p>
+            <p>$ {price}</p>
             <p>
                 <button className='btn-1' onClick={() => setNumber(number > 0 ? number - 1 : 0)}>-</button>
                 {number}
@@ -80,7 +80,7 @@ export default function FoodOrderPage() {
             {menu.map(item => <FoodItem key={item.餐點名稱} foodName={item.餐點名稱} price={item.價格} onNumberEdit={onEditOrder}/>)}
         </div>
         <div className='stick-bottom irony-bg'>
-            <p className='large-text black-text'>總價: {totalPrice}$</p>
+            <p className='large-text black-text'>總價: $ {totalPrice}</p>
             <button className='btn-2' onClick={() => onSendOrder()}>送出訂單</button>
         </div>
         </Fragment>

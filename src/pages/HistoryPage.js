@@ -110,7 +110,7 @@ export default function HistoryPage() {
                                     }
                                 </tbody>
                             </table>
-                            <p>總金額: ${currentOrder.總金額}</p>
+                            <p>總金額: $ {currentOrder.總金額}</p>
                             <button className='btn-1' onClick={() => setCurrentOrder({})}>返回</button>
                         </div>
                 }
