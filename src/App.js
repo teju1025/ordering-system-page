@@ -16,23 +16,23 @@ function App() {
       <BrowserRouter>
         <nav>
           <h1>點餐系統</h1>
-          <Link to="/">主頁面</Link>
-          <Link to="/order">點餐</Link>
-          <Link to="/add-menu">新增餐點</Link>
-          <Link to="/delete-menu">移除餐點</Link>
-          <Link to="/ingredient-management">食材管理</Link>
-          <Link to="/history">歷史訂單紀錄</Link>
-          <Link to="/statistic">銷貨統計</Link>
+          <Link to="/ordering-system-page">主頁面</Link>
+          <Link to="/ordering-system-page/order">點餐</Link>
+          <Link to="/ordering-system-page/add-menu">新增餐點</Link>
+          <Link to="/ordering-system-page/delete-menu">移除餐點</Link>
+          <Link to="/ordering-system-page/ingredient-management">食材管理</Link>
+          <Link to="/ordering-system-page/history">歷史訂單紀錄</Link>
+          <Link to="/ordering-system-page/statistic">銷貨統計</Link>
         </nav>
         <main className="content">
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/order" element={<FoodOrderPage/>}/>
-            <Route path="/add-menu" element={<MenuAddPage/>}/>
-            <Route path="/delete-menu" element={<MenuDeletePage/>}/>
-            <Route path="/ingredient-management" element={<IngredientManagementPage/>}/>
-            <Route path="/history" element={<HistoryPage/>}/>
-            <Route path="/statistic" element={<StatisticPage/>}/>
+            <Route path="/ordering-system-page" element={<Home/>}/>
+            <Route path="/ordering-system-page/order" element={<FoodOrderPage/>}/>
+            <Route path="/ordering-system-page/add-menu" element={<MenuAddPage/>}/>
+            <Route path="/ordering-system-page/delete-menu" element={<MenuDeletePage/>}/>
+            <Route path="/ordering-system-page/ingredient-management" element={<IngredientManagementPage/>}/>
+            <Route path="/ordering-system-page/history" element={<HistoryPage/>}/>
+            <Route path="/ordering-system-page/statistic" element={<StatisticPage/>}/>
           </Routes>
         </main>
       </BrowserRouter>
