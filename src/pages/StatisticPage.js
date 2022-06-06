@@ -8,76 +8,27 @@ export default function StatisticPage() {
     const [menu, setMenu] = useState([])
     const [statistic, setStatistic] = useState({})
     // {餐點名稱: "測試", 銷售量: 10, 銷售金額: 10}
-    
-    useEffect(() => {
-        fetch('https://ordering-system-api.herokuapp.com/history').then(res => res.json()).then(data => {
-            setOrders(Object.keys(data).map(key =>{
-                return {
-                    訂單編號: key,
-                    ...data[key]
-                }
-            }))
-        })
-    }, [])
-
-    useEffect(() => {
-        fetch('https://ordering-system-api.herokuapp.com/menu').then(res => res.json()).then(data => {
-            setMenu(data['menu'])
-        })
-    }, [orders])
-
-    useEffect(() => {
-
-        const statisticCopy = {}
-        for(let i = 0; i < menu.length; i++) {
-            statisticCopy[menu[i].餐點名稱] = {
-                銷售量: 0,
-                銷售金額: 0
-            }
-        }
-        console.log(menu)
-        console.log(orders)
-        console.log(statisticCopy)
-        // loop through orders
-        for(let i = 0; i < orders.length; i++) {
-            Object.keys(orders[i].訂購內容).forEach(key => {
-                // find the corresponding menu
-                const menuItem = menu.find(item => item.餐點名稱 === key)
-                if(menuItem) {
-                    statisticCopy[key].銷售量 += orders[i].訂購內容[key]
-                    statisticCopy[key].銷售金額 += orders[i].訂購內容[key] * menuItem.價格
-                }
-            })
-        }
-        setStatistic(statisticCopy)
-
-    }, [menu])
-    
+        
     useEffect(() => {
         let query = ''
-            if(startDate !== '') {
-                query += `dateBegin=${startDate}`
+        if(startDate !== '') {
+            query += `dateBegin=${startDate}`
+        }
+        if(endDate !== '') {
+            if (query !== '') {
+                query += '&'
             }
-            if(endDate !== '') {
-                if (query !== '') {
-                    query += '&'
-                }
-                query += `dateEnd=${endDate}`
-            }
+            query += `dateEnd=${endDate}`
+        }
 
-            fetch(`https://ordering-system-api.herokuapp.com/history?${query}`).then(res => {
-                if(res.ok) {
-                   return res.json() 
-                }
-                return {}
-            }).then(data => {
-                setOrders(Object.keys(data).map(key =>{
-                    return {
-                        訂單編號: key,
-                        ...data[key]
-                    }
-                }))
-            })
+        fetch(`https://ordering-system-api.herokuapp.com/statistic?${query}`).then(res => {
+            if(res.ok) {
+                return res.json() 
+            }
+            return {}
+        }).then(data => {
+            setStatistic(data)
+        })
     }, [startDate, endDate])
     
     return (
@@ -98,7 +49,9 @@ export default function StatisticPage() {
                     <tr>
                         <th>餐點名稱</th>
                         <th>銷售量</th>
-                        <th>銷售金額</th>
+                        <th>銷售收入</th>
+                        <th>銷售成本</th>
+                        <th>銷售毛額</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,14 +61,15 @@ export default function StatisticPage() {
                                 <tr>
                                     <td>{key}</td>
                                     <td>{statistic[key].銷售量} 份</td>
-                                    <td>$ {statistic[key].銷售金額}</td>
+                                    <td>$ {statistic[key].銷售收入}</td>
+                                    <td>$ {statistic[key].銷售成本}</td>
+                                    <td>$ {statistic[key].銷售收入 - statistic[key].銷售成本}</td>
                                 </tr>
                             )
                         })
                     }
                 </tbody>
-            </table>
-            
+            </table>  
         </div>
     )
 }
