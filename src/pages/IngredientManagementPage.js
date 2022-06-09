@@ -142,9 +142,9 @@ export default function IngredientManagementPage() {
                     <label htmlFor='ingredientName'>新增食材名稱</label>
                     <input placeholder='Ex: 西瓜' id='ingredientName' onChange={e => setIngredientName(e.target.value)}/>
                     <label htmlFor='ingredientStock'>新增食材庫存</label>
-                    <input placeholder='Ex: 201' id='ingredientStock' onChange={e => setIngredientCost(e.target.value)}/>
+                    <input placeholder='Ex: 201' id='ingredientStock' onChange={e => setIngredientStock(e.target.value)}/>
                     <label htmlFor='ingredientCost'>新增單位食材成本</label>
-                    <input placeholder='Ex: 10' id='ingredientCost' onChange={e => setIngredientStock(e.target.value)}/>
+                    <input placeholder='Ex: 10' id='ingredientCost' onChange={e => setIngredientCost(e.target.value)}/>
 
                 <button className='btn-2' onClick={() => onAddIngredient()}>新增食材</button>
             </div>
